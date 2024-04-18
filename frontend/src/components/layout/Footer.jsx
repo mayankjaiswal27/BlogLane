@@ -27,7 +27,10 @@ const Footer = () => {
             ullam, nesciunt ex laudantium quidem error sint, eum explicabo.
           </p>
           <p>
-            <span>Phone:</span>+91 1234567890
+            <span>Email:</span>mayankjaiswal0104@gmail.com
+          </p>
+          <p>
+            <span>Phone:</span>0123987123
           </p>
         </div>
         <div className="quick_links">
@@ -62,7 +65,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="container">
-        <div className="logo"><img src="/logosmall.png" width="50px" /></div>
+        <div className="logo"><img src="/logosmall.png" alt="logo" width="50px"/></div>
         <div className="links">
           <Link to={"/"} target="_blank">
             <AiFillInstagram />
@@ -70,7 +73,9 @@ const Footer = () => {
           <Link to={"/"} target="_blank">
             <FaGitSquare />
           </Link>
-
+          <Link to={"/"} target="_blank">
+            <AiFillYoutube />
+          </Link>
           <Link to={"/"} target="_blank">
             <AiFillLinkedin />
           </Link>

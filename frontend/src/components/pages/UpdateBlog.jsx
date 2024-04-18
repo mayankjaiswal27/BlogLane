@@ -29,7 +29,7 @@ const UpdateBlog = () => {
     const fetchBlog = async () => {
       try {
         const { data } = await axios.get(
-          `https://bloglane.onrender.com/api/v1/blog/singleblog/${id}`,
+          `http://localhost:4000/api/v1/blog/singleblog/${id}`,
           { withCredentials: true }
         );
         setTitle(data.blog.title);

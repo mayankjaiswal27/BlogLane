@@ -751,6 +751,7 @@ footer .container .categories {
 }
 footer .container .about p {
   color: gray;
+  font-size: 18px;
 }
 footer .container .about p span {
   font-weight: 700;

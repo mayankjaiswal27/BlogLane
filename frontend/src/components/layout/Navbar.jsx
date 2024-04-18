@@ -46,7 +46,7 @@ const Navbar = () => {
     >
       <nav>
         <div className="logo">
-          <img src="/logo.png" alt="logo" width="90px" />
+        <img src="/logo.png" alt="logo" width="100px"/>
         </div>
         <div className={show ? "links show" : "links"}>
           <ul>

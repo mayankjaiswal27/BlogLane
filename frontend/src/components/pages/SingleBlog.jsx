@@ -11,7 +11,7 @@ const SingleBlog = () => {
     const getSingleBlog = async () => {
       try {
         const { data } = await axios.get(
-          `https://bloglane.onrender.com/api/v1/blog/singleblog/${id}`,
+          `http://localhost:4000/api/v1/blog/singleblog/${id}`,
           { withCredentials: true }
         );
         setBlog(data.blog);
@@ -37,7 +37,6 @@ const SingleBlog = () => {
             <div className="author">
               <img src={blog.authorAvatar} alt="author_avatar" />
               <p>{blog.authorName}</p>
-              <p>Created On: {new Date(blog.createdOn).toLocaleDateString()}</p>
             </div>
           </div>
           {blog && blog.mainImage && (

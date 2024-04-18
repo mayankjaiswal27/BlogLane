@@ -10,7 +10,7 @@ const MyBlogs = () => {
   useEffect(() => {
     const fetchMyBlogs = async () => {
       const { data } = await axios.get(
-        "https://bloglane.onrender.com/api/v1/blog/myblogs",
+        "http://localhost:4000/api/v1/blog/myblogs",
         { withCredentials: true }
       );
       setMyBlogs(data.blogs);
