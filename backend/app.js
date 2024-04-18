@@ -29,7 +29,9 @@ app.use(
     tempFileDir: "/tmp/",
   })
 );
-
+app.use("/", (req, res) => {
+  res.send("Welcome to the blog API");
+});
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/blog", blogRouter);
 
