@@ -7,7 +7,7 @@ const PopularAuthors = () => {
   useEffect(() => {
     const fetchAuthors = async () => {
       const { data } = await axios.get(
-        "http://localhost:4000/api/v1/user/authors",
+        "https://bloglane.onrender.com/api/v1/user/authors",
         { withCredentials: true }
       );
       setAuthors(data.authors);
