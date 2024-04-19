@@ -20,6 +20,29 @@ app.use(
 );
 
 app.use(cookieParser());
+app.get('/set-cookie', (req, res) => {
+  // Set cookie with correct domain
+  res.cookie('myCookie', 'cookieValue', {
+    domain: 'https://bloglane.onrender.com', // Replace 'example.com' with your actual domain
+    httpOnly: true,
+    // Other cookie options...
+  });
+
+  res.send('Cookie set successfully');
+});
+
+// Route handler to read cookie
+app.get('/read-cookie', (req, res) => {
+  // Read the cookie
+  const myCookie = req.cookies.myCookie;
+
+  if (myCookie) {
+    res.send(`Cookie value: ${myCookie}`);
+  } else {
+    res.send('Cookie not found');
+  }
+});
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
