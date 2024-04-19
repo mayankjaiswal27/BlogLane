@@ -14,7 +14,7 @@ const Navbar = () => {
     setShow(!show);
   };
   
-  const isDashboard = useLocation("https://blog-lane.vercel.app/dashboard");
+  const isDashboard = useLocation("http://localhost:5173/dashboard");
   
   const { mode, setMode, isAuthenticated, user, setIsAuthenticated } = useContext(Context);
   
@@ -46,7 +46,7 @@ const Navbar = () => {
     >
       <nav>
         <div className="logo">
-        <img src="/logo.png" alt="logo" width="100px"/>
+        <img src="/logo.png" alt="logo" width="90px" />
         </div>
         <div className={show ? "links show" : "links"}>
           <ul>

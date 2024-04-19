@@ -23,10 +23,14 @@ const Login = () => {
         }
       )
       .then((res) => {
+        
         toast.success(res.data.message);
+        localStorage.setItem("token", user.getJWTToken());
         setEmail("");
         setPassword("");
         setRole("");
+        
+        console.log("Login Successfull");
         navigateTo("/");
       })
       .catch((error) => {

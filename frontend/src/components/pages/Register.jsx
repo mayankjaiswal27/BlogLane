@@ -118,7 +118,7 @@ const Register = () => {
             <option value="">SELECT YOUR EDUCATION</option>
             <option value="Matric">Matric</option>
             <option value="Intermediate">Intermediate</option>
-            <option value="Graduation">Graduation</option>
+            <option value="Graducation">Graducation</option>
             <option value="Masters">Masters</option>
             <option value="PhD">PhD</option>
           </select>

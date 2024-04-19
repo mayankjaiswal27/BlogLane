@@ -78,7 +78,19 @@ export const login = catchAsyncErrors(async (req, res, next) => {
       new ErrorHandler(`User with provided role(${role}) not found`, 400)
     );
   }
-  sendToken(user, 200, "User logged in successfully", res);
+  const token = user.getJWTToken();
+  const options = {
+    expires: new Date(
+      Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
+    ),
+    httpOnly: true,
+  };
+  res.status(statusCode).cookie("token", token, options).json({
+    success: true,
+    user,
+    message,
+    token,
+  });
 });
 
 export const logout = catchAsyncErrors((req, res, next) => {

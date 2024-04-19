@@ -2,7 +2,18 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../main";
 import { Navigate, useParams } from "react-router-dom";
 import axios from "axios";
-
+const formatDate = (dateString) => {
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    timeZone: "Asia/Kolkata", 
+  };
+  return new Date(dateString).toLocaleDateString(undefined, options);
+};
 const SingleBlog = () => {
   const { mode, user, isAuthenticated } = useContext(Context);
   const { id } = useParams();
@@ -37,6 +48,7 @@ const SingleBlog = () => {
             <div className="author">
               <img src={blog.authorAvatar} alt="author_avatar" />
               <p>{blog.authorName}</p>
+              <p>Created on: {formatDate(blog.createdOn)} (I.S.T.)</p>
             </div>
           </div>
           {blog && blog.mainImage && (

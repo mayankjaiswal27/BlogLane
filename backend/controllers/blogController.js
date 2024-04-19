@@ -248,6 +248,7 @@ export const updateBlog = catchAsyncErrors(async (req, res, next) => {
       };
     }
   }
+  newBlogData.updatedOn = Date.now();
   blog = await Blog.findByIdAndUpdate(id, newBlogData, {
     new: true,
     runValidators: true,

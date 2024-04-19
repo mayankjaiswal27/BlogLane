@@ -5,7 +5,7 @@ import { FaGitSquare } from "react-icons/fa";
 import { Context } from "../../main";
 
 const Footer = () => {
-  const isDashboard = useLocation("https://blog-lane.vercel.app/dashboard");
+  const isDashboard = useLocation("http://localhost:5173/dashboard");
   const { mode, setMode } = useContext(Context);
 
   return (
@@ -26,9 +26,7 @@ const Footer = () => {
             Consectetur possimus sed praesentium! Et sunt, distinctio veniam
             ullam, nesciunt ex laudantium quidem error sint, eum explicabo.
           </p>
-          <p>
-            <span>Email:</span>mayankjaiswal0104@gmail.com
-          </p>
+
           <p>
             <span>Phone:</span>0123987123
           </p>
@@ -65,7 +63,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="container">
-        <div className="logo"><img src="/logosmall.png" alt="logo" width="50px"/></div>
+        <div className="logo"> <img src="/logosmall.png" alt="logo" width="50px" /></div>
         <div className="links">
           <Link to={"/"} target="_blank">
             <AiFillInstagram />
