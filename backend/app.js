@@ -52,7 +52,9 @@ app.use(
     tempFileDir: "/tmp/",
   })
 );
-
+app.use("/", (req, res) => {
+  res.send("API is running....");
+});
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/blog", blogRouter);
 
