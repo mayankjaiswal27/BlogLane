@@ -61,36 +61,40 @@ export const register = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const login = catchAsyncErrors(async (req, res, next) => {
-  const { email, password, role } = req.body;
-  if (!email || !password || !role) {
-    return next(new ErrorHandler("Please fill full form!", 400));
+  
+  try {
+    const { email, password, role } = req.body;
+    
+    const userExist = await User.findOne({ email });
+    if (!userExist) {
+      return res.status(400).json({ message: "Invalid Credentials" });
+    }
+    if (userExist.role !== role) {
+      return next(
+        new ErrorHandler(`User with provided role(${role}) not found`, 400)
+      );
+    }
+    //const user = await bcrypt.compare(password, userExist.password);
+    const user= await userExist.comparePassword(password);
+    
+
+    if (user) {
+      res
+        .status(201)
+        .json({
+          msg: "Login Successful",
+          token: await userExist.generateToken(),
+          userId: userExist._id.toString(),
+        });
+    }else{
+      res.status(401).json({message:"Invalid UserName or Password"})
+    }
+    
+  } catch (error) {
+    //res.status(500).json({ message: "Internal server error" });
+    next(error);
   }
-  const user = await User.findOne({ email }).select("+password");
-  if (!user) {
-    return next(new ErrorHandler("Invalid email or password!", 400));
-  }
-  const isPasswordMatched = await user.comparePassword(password);
-  if (!isPasswordMatched) {
-    return next(new ErrorHandler("Invalid email or password", 400));
-  }
-  if (user.role !== role) {
-    return next(
-      new ErrorHandler(`User with provided role(${role}) not found`, 400)
-    );
-  }
-  const token = user.getJWTToken();
-  const options = {
-    expires: new Date(
-      Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
-    ),
-    httpOnly: true,
-  };
-  res.status(statusCode).cookie("token", token, options).json({
-    success: true,
-    user,
-    message,
-    token,
-  });
+ 
 });
 
 export const logout = catchAsyncErrors((req, res, next) => {
