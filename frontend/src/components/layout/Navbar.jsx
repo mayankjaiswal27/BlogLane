@@ -46,7 +46,7 @@ const Navbar = () => {
     >
       <nav>
         <div className="logo">
-        <img src="/logo.png" alt="logo" width="90px" />
+          <img src="/logo.png" alt="logo" width="90px" />
         </div>
         <div className={show ? "links show" : "links"}>
           <ul>
@@ -86,7 +86,7 @@ const Navbar = () => {
                 <MdDarkMode className="dark-icon" />
               )}
             </button>
-            {isAuthenticated && user.role === "Author" ? (
+            {isAuthenticated && user && user.role === "Author" ? (
               <Link
                 to={"/dashboard"}
                 onClick={handleNavbar}
